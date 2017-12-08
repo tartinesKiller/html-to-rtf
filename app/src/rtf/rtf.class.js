@@ -4,7 +4,6 @@ const AllowedHtmlTags = require('../allowed-html-tags/allowed-html-tags.class');
 const Table           = require('../table/table.class');
 const MyString        = require('../string/my-string.class');
 const juice 		      = require('juice');
-const fs 				      = require('fs');
 
 class Rtf {
   constructor() { 
@@ -111,13 +110,6 @@ class Rtf {
     let rtfReferenceColor = Style.getRtfReferenceColor('rgb(255, 255, 0)');
     let referenceColorNumber = rtfReferenceColor.match(/[0-9]+/);
     this.addReferenceTagInRtfCode('\\highlight' + referenceColorNumber.toString());
-  }
-
-  saveRtfInFile(path, value) {
-    fs.writeFile(path, value, (err) => {
-      if (err) throw err;
-      console.log('The file has been saved!');
-    });
   }
 
   clearCacheContent() {
